@@ -1,0 +1,40 @@
+<div class="customer-list-container">
+  <h2>Customer List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let customer of customers"
+        [class.selected]="customer === selectedCustomer"
+        (click)="selectCustomer(customer)"
+      >
+        <td>{{ customer.FirstName }}</td>
+        <td>{{ customer.LastName }}</td>
+        <td>{{ customer.Email }}</td>
+        <td>
+          <button (click)="editCustomer(customer.Id); $event.stopPropagation()">
+            Edit
+          </button>
+          <button
+            (click)="deleteCustomer(customer.Id); $event.stopPropagation()"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="selectedCustomer" class="selected-customer">
+    <h3>Selected Customer</h3>
+    <p><strong>First Name:</strong> {{ selectedCustomer.FirstName }}</p>
+    <p><strong>Last Name:</strong> {{ selectedCustomer.LastName }}</p>
+    <p><strong>Email:</strong> {{ selectedCustomer.Email }}</p>
+  </div>
+</div>

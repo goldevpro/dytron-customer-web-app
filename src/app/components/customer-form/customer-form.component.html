@@ -1,0 +1,43 @@
+<h2>{{ isEditMode ? 'Edit Customer' : 'Add New Customer' }}</h2>
+<div style="display: flex; justify-content: center; align-items: center; height: 30vh;">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+        <div class="form-grid">
+            <div class="form-row">
+                <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" required />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" required />
+                </mat-form-field>
+            </div>
+            <div class="form-row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required type="email" />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Created Date/Time</mat-label>
+                    <input matInput formControlName="createdDate" />
+                </mat-form-field>
+            </div>
+            <div class="form-row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Updated Date/Time</mat-label>
+                    <input matInput formControlName="lastUpdatedDate" />
+                </mat-form-field>
+            </div>
+            <div class="form-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="customerForm.invalid">
+                    {{ isEditMode ? 'Update Customer' : 'Add Customer' }}
+                </button>
+                &nbsp;
+                <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
