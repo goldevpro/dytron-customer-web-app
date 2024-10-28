@@ -1,5 +1,8 @@
-<h2>{{ isEditMode ? 'Edit Customer' : 'Add New Customer' }}</h2>
+<div style="display: flex; justify-content: center; align-items: center; height: 20vh;">
+    <h2>{{ isEditMode ? 'Edit Customer' : 'Add New Customer' }}</h2>
+</div>
 <div style="display: flex; justify-content: center; align-items: center; height: 30vh;">
+    
     <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
         <div class="form-grid">
             <div class="form-row">
@@ -35,7 +38,7 @@
                     {{ isEditMode ? 'Update Customer' : 'Add Customer' }}
                 </button>
                 &nbsp;
-                <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+                <button mat-flat-button color="primary" color="warn" (click)="onCancel()">Cancel</button>
             </div>
         </div>
     </form>

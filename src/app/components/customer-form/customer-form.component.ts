@@ -5,11 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../../models/customer.model';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-customer-form',
   standalone: true,
-  imports: [MatLabel, MatFormField, ReactiveFormsModule, MatInputModule],
+  imports: [MatLabel, MatFormField, ReactiveFormsModule, MatInputModule, MatButtonModule],
   templateUrl: './customer-form.component.html',
   styleUrl: './customer-form.component.scss'
 })

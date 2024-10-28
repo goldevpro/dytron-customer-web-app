@@ -19,10 +19,17 @@
         <td>{{ customer.LastName }}</td>
         <td>{{ customer.Email }}</td>
         <td>
-          <button (click)="editCustomer(customer.Id); $event.stopPropagation()">
+          <button
+          mat-flat-button
+          color="primary"
+            (click)="editCustomer(customer.Id); $event.stopPropagation()"
+          >
             Edit
           </button>
+          &nbsp;
           <button
+            mat-flat-button
+            color="primary"
             (click)="deleteCustomer(customer.Id); $event.stopPropagation()"
           >
             Delete

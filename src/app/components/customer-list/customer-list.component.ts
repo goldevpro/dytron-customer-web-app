@@ -3,19 +3,23 @@ import { Customer } from '../../models/customer.model';
 import { CustomerService } from '../../services/customer.service';
 import { NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-customer-list',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, MatButtonModule],
   templateUrl: './customer-list.component.html',
-  styleUrl: './customer-list.component.scss'
+  styleUrl: './customer-list.component.scss',
 })
 export class CustomerListComponent implements OnInit {
   customers: Customer[] = []; // Array of Customer objects
   selectedCustomer: Customer | null = null; // Holds the currently selected Customer object
 
-  constructor(private customerService: CustomerService, private router: Router) { }
+  constructor(
+    private customerService: CustomerService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.getCustomers();
@@ -27,7 +31,7 @@ export class CustomerListComponent implements OnInit {
       (data: Customer[]) => {
         console.log('Customers fetched successfully', data);
         this.customers = data;
-      }, 
+      },
       (error) => {
         console.error('Error fetching customers', error);
       }
@@ -47,7 +51,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   deleteCustomer(id: number): void {
-    if(!confirm('Are you sure you want to delete this customer?')) {
+    if (confirm('Are you sure you want to delete this customer?')) {
       this.customerService.deleteCustomer(id).subscribe(
         () => {
           this.customers = this.customers.filter((c) => c.Id !== id); // Update the customer list locally
@@ -64,5 +68,6 @@ export class CustomerListComponent implements OnInit {
   }
 
   editCustomer(customerId: number): void {
-    this.router.navigate(['/edit-customer', customerId]);}
+    this.router.navigate(['/edit-customer', customerId]);
+  }
 }
