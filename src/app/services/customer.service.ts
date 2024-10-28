@@ -35,6 +35,6 @@ export class CustomerService {
   }
 
   deleteCustomer(id: number): Observable<Customer> {
-    return this.http.delete<Customer>(`${this.apiUrl}/DeleteCustomer/${id}`);
+    return this.http.delete<Customer>(`${this.apiUrl}/DeleteCustomer?id=${id}`);
   }
 }
